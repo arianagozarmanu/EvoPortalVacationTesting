@@ -35,6 +35,9 @@ public class LoginPage extends PageObject {
     @FindBy(css = "a[href*='/logout']")
     private WebElementFacade signOutButton;
 
+    @FindBy(css = "div.portlet-msg-error")
+    private WebElementFacade errorMessage;
+    
     public void enter_screenName(String keyword) {
         screenName.type(keyword);
     }
@@ -57,6 +60,18 @@ public class LoginPage extends PageObject {
     		found = true;
     	}
     	Assert.assertTrue("Vacation button not found", found);
+    }
+    
+    public void checkIfErrorAppears(){
+    	boolean found = false;
+    	if(errorMessage.isPresent()){
+    		found = true;
+    	}
+    	Assert.assertTrue("Error message does not appear", found);
+    }
+    
+    public void openVacationTab(){
+    	vacationButton.click();
     }
 
   
