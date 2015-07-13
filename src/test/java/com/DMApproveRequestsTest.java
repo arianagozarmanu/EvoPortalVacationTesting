@@ -10,11 +10,13 @@ import tools.Constants;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
 import com.steps.UserSteps;
 
 @RunWith(SerenityRunner.class)
-public class DMInboxAccessTest {
+public class DMApproveRequestsTest {
 
 	@Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -26,16 +28,20 @@ public class DMInboxAccessTest {
     public UserSteps endUser;
     @Steps
     public DMInboxAccessSteps dmInboxAccessSteps;
+    @Steps
+    public DMApproveRequestsSteps dmApproveSteps;
     
-    @Issue("InboxAccessing")
+    @Issue("DM Approve Requests Test")
     
     @Test
-    public void DM_can_access_inbox_item(){
+    public void DM_can_approve_requests(){
     	endUser.is_the_home_page();
     	endUser.enters_data(Constants.DM_SCREEN_NAME, Constants.DM_PASSWORD);
     	endUser.signsIn();
     	dmInboxAccessSteps.openVacationTab();
     	dmInboxAccessSteps.accessInbox();
-    	dmInboxAccessSteps.approve_button_appears();
+    	dmApproveSteps.check_last_request();
+    	dmApproveSteps.click_approve();
+    	dmApproveSteps.succes_message_occurs();
     }
 }

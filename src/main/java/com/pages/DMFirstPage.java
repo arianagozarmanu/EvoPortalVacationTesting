@@ -20,4 +20,8 @@ public class DMFirstPage extends PageObject{
 	public void checkIfApproveButtonExists(){
 		Assert.assertTrue("Approve button does not appear", approveButton.isPresent());
 	}
+	
+	public void clickApprove(){
+		approveButton.click();
+	}
 }
