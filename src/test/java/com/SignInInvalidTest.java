@@ -32,8 +32,7 @@ public class SignInInvalidTest {
         endUser.is_the_home_page();
 		endUser.enters_data(Constants.VALID_SCREEN_NAME,Constants.INVALID_PASSWORD);
 		endUser.signsIn();
-		endUser.sign_in_validation();
-		endUser.signsOut();
+		endUser.error_message_occurs();
 
     }
 

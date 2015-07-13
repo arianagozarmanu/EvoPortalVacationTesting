@@ -42,6 +42,12 @@ public class UserSteps extends ScenarioSteps {
     }
     
     @Step
+    public void error_message_occurs()
+    {
+    	loginPage.checkIfErrorAppears();
+    }
+    
+    @Step
     public void signsOut()
     {
     	loginPage.signout();	
