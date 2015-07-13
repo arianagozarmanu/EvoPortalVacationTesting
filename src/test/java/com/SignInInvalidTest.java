@@ -29,7 +29,7 @@ public class SignInInvalidTest {
     @Test
     public void sign_in_should_be_valid() {
         endUser.is_the_home_page();
-		endUser.enters_data("daniela","evo.portal45");
+		endUser.enters_data("daniela","evo.portal47");
 		endUser.signsIn();
 		endUser.sign_in_validation();
 		endUser.signsOut();
