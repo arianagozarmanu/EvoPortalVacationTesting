@@ -2,28 +2,41 @@ package com.steps;
 
 import com.pages.AssignedToMeRequestsPage;
 import com.pages.DMFirstPage;
-import com.pages.LoginPage;
+
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class DMApproveRequestsSteps extends ScenarioSteps{
+public class DMApproveRequestsSteps extends ScenarioSteps {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	AssignedToMeRequestsPage approveRequest;
 	DMFirstPage firstPage;
-	
+
 	@Step
-	public void check_last_request(){
+	public void check_last_request() {
 		approveRequest.checkLastRequest();
 	}
-	
+
 	@Step
-	public void click_approve(){
+	public void click_approve() {
 		firstPage.clickApprove();
+	}
+
+	@Step
+	public void succes_message_occurs() {
+		approveRequest.checkIfSuccesMessageAppears();
 	}
 	
 	@Step
-	public void succes_message_occurs(){
-		approveRequest.checkIfSuccesMessageAppears();
+	public void request_is_approved() {
+		approveRequest.checkIfApproveRequestExists();
+	}
+	
+	@Step
+	public void show_75_requests_per_page() {
+		approveRequest.show75RequestsPerPage();
 	}
 
 }
