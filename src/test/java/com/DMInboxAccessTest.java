@@ -26,6 +26,7 @@ public class DMInboxAccessTest {
 
     @Steps
     public UserSteps endUser;
+    @Steps
     public DMInboxAccessSteps dmInboxAccessSteps;
     
     @Issue("InboxAccessing")
@@ -36,5 +37,7 @@ public class DMInboxAccessTest {
     	endUser.enters_data(Constants.DM_SCREEN_NAME, Constants.DM_PASSWORD);
     	endUser.signsIn();
     	dmInboxAccessSteps.openVacationTab();
+    	dmInboxAccessSteps.accessInbox();
+    	dmInboxAccessSteps.approve_button_appears();
     }
 }
