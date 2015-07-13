@@ -1,11 +1,5 @@
 package com;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-
-import com.steps.UserSteps;
-
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
@@ -14,10 +8,17 @@ import net.thucydides.core.pages.Pages;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import tools.Constants;
 
-@RunWith(SerenityRunner.class)
-public class SignInInvalidTest {
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
-    @Managed(uniqueSession = true)
+import com.steps.DMInboxAccessSteps;
+import com.steps.UserSteps;
+
+@RunWith(SerenityRunner.class)
+public class DMInboxAccessTest {
+
+	@Managed(uniqueSession = true)
     public WebDriver webdriver;
 
     @ManagedPages(defaultUrl = Constants.EVO_URL)
@@ -25,16 +26,15 @@ public class SignInInvalidTest {
 
     @Steps
     public UserSteps endUser;
+    public DMInboxAccessSteps dmInboxAccessSteps;
     
-    @Issue("SignIn-InvalidCredentials")
+    @Issue("InboxAccessing")
     
     @Test
-    public void sign_in_should_be_valid() {
-        endUser.is_the_home_page();
-		endUser.enters_data(Constants.VALID_SCREEN_NAME,Constants.INVALID_PASSWORD);
-		endUser.signsIn();
-		endUser.error_message_occurs();
-
+    public void DM_can_access_inbox_item(){
+    	endUser.is_the_home_page();
+    	endUser.enters_data(Constants.DM_SCREEN_NAME, Constants.DM_PASSWORD);
+    	endUser.signsIn();
+    	dmInboxAccessSteps.openVacationTab();
     }
-
-} 
+}

@@ -1,23 +1,20 @@
 package com;
 
-import net.thucydides.core.annotations.Issue;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Pending;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.pages.Pages;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.junit.runners.ThucydidesRunner;
-import tools.Constants;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-
 import com.steps.UserSteps;
 
-@RunWith(ThucydidesRunner.class)
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Issue;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.ManagedPages;
+import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.pages.Pages;
+import tools.Constants;
+
+@RunWith(SerenityRunner.class)
 public class SignInValidTest {
 
     @Managed(uniqueSession = true)
@@ -29,7 +26,7 @@ public class SignInValidTest {
     @Steps
     public UserSteps endUser;
 
-    @Issue("#WIKI-1")
+    @Issue("SignIn-ValidCredentials")
     
     @Test
     public void sign_in_should_be_valid() {
