@@ -1,23 +1,26 @@
 package com;
 
-import net.thucydides.core.annotations.Issue;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.junit.runners.ThucydidesRunner;
-import tools.Constants;
+
+
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.CreateVacationInAFreeLegalDaySteps;
+import tools.Constants;
+
+
+import com.steps.CreateVacationSteps;
 import com.steps.DMInboxAccessSteps;
 import com.steps.UserSteps;
 
-@RunWith(ThucydidesRunner.class)
-public class CreateVacationInAFreeLegalDayTest {
+@RunWith(SerenityRunner.class)
+public class CreateVacationTest {
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -28,7 +31,7 @@ public class CreateVacationInAFreeLegalDayTest {
     @Steps
     UserSteps endUser;
     @Steps
-    CreateVacationInAFreeLegalDaySteps employee; 
+    CreateVacationSteps employee; 
     @Steps
     DMInboxAccessSteps vacationTab;
     
@@ -41,9 +44,11 @@ public class CreateVacationInAFreeLegalDayTest {
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
 		employee.startingDate();
+		employee.selectDate(2015, "Aug", 19);
 		employee.endingDate();
+		employee.selectDate(2015, "Aug", 20);
 		employee.saveTheRequest();
-		employee.invalidSelectionOfDates();
+		employee.openMyRequestsTab();
     }
 
 } 
