@@ -51,6 +51,6 @@ public class DMApproveRequestsTest {
 		endUser.signsIn();
 		dmInboxAccessSteps.openVacationTab();
 		//dmApproveSteps.show_75_requests_per_page();
-		dmApproveSteps.request_is_approved();
+		dmApproveSteps.request_is_approved(Constants.APPROVE_MSG);
 	}
 }

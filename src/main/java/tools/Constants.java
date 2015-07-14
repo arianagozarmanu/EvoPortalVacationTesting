@@ -8,4 +8,6 @@ public class Constants {
 	public static final String VALID_PASSWORD ="evo.portal1";
 	public static final String DM_SCREEN_NAME = "ariana";
 	public static final String DM_PASSWORD ="car5zoo";
+	public static final String APPROVE_MSG="Approved";
+	public static final String PENDING_MSG="Pending";
 }

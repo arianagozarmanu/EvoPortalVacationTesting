@@ -30,8 +30,8 @@ public class DMApproveRequestsSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void request_is_approved() {
-		approveRequest.checkApproveRequest();
+	public void request_is_approved(String status) {
+		approveRequest.checkApproveRequest(status);
 	}
 	
 	@Step

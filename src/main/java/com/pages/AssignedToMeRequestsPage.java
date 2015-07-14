@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import tools.Constants;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -74,12 +75,12 @@ public class AssignedToMeRequestsPage extends PageObject {
 		nextPageButton.click();
 	}
 
-	public void checkApproveRequest(){
-		boolean exists=checkIfApproveRequestExists();
+	public void checkApproveRequest(String status){
+		boolean exists=checkIfApproveRequestExists(status);
 		Assert.assertTrue("Request does not exist!", exists);
 	}
 	
-	public boolean checkIfApproveRequestExists() {
+	public boolean checkIfApproveRequestExists(String status) {
 
 		while (nextPageButton.isPresent()) {
 			List<WebElement> dataList = getDriver()
@@ -88,7 +89,7 @@ public class AssignedToMeRequestsPage extends PageObject {
 					.findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
 			for (int i = 0; i < dataList.size(); i++) {
 				if (dataList.get(i).getText().equals(data)) {
-					if (statusList.get(i).getText().equals("Approved")) {
+					if (statusList.get(i).getText().equals(status)) {
 						return true;
 					}
 				}
@@ -99,5 +100,9 @@ public class AssignedToMeRequestsPage extends PageObject {
 			getDriver().navigate().refresh();
 		}
 		return false;
+	}
+	
+	public void setData(String newData) {
+		data=newData;
 	}
 }
