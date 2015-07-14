@@ -45,19 +45,16 @@ public class DMVacationReportPageTest {
 		endUser.signsIn();
 		dmInboxAccessSteps.openVacationTab();
 		vacReportPage.openVacationReportTab();
-		vacReportPage.typeName(Constants.LAST_NAME, Constants.VALID_SCREEN_NAME);
+		vacReportPage.typeName(Constants.LAST_NAME, Constants.FIRST_NAME);
 		vacReportPage.clickSearchButton();
 		vacReportPage.accessUser();
 		vacReportPage.getTotalFreeDays();
 		dmInboxAccessSteps.accessInbox();
-		vacReportPage.rejectOneRequest(Constants.LAST_NAME, Constants.VALID_SCREEN_NAME);
-		//cauta daniela vandor
-		//click_reject();
-		//dmApproveSteps.succes_message_occurs();
-		//Vacations_Report
-		//last name vandor
-		//first name daniela
-		//luat obiect si click
-		//total available free days plus one
+		vacReportPage.checkOneRequest(Constants.LAST_NAME, Constants.FIRST_NAME);
+		vacReportPage.clickReject();
+		dmApproveSteps.succes_message_occurs();
+		vacReportPage.searchUser(Constants.LAST_NAME, Constants.FIRST_NAME);
+		vacReportPage.accessUser();
+		vacReportPage.compareTotalFreeDays();
 	}
 }

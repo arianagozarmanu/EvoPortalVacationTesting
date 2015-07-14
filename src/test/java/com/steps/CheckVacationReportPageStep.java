@@ -5,7 +5,9 @@ import com.pages.DMFirstPage;
 import com.pages.DMVacationsReportPage;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
+import tools.Constants;
 
 public class CheckVacationReportPageStep extends ScenarioSteps{
 
@@ -37,7 +39,25 @@ public class CheckVacationReportPageStep extends ScenarioSteps{
 	}
 	
 	@Step
-	public void rejectOneRequest(String lastName, String firstName) {
-		vacReportPage.rejectOneRequest(lastName,firstName);
+	public void clickReject(){
+		vacReportPage.clickRejectButton();
 	}
+	
+	@Step
+	public void checkOneRequest(String lastName, String firstName) {
+		vacReportPage.checkOneRequest(lastName,firstName);
+	}
+	
+	@Step
+	public void compareTotalFreeDays(){
+		vacReportPage.compareTotalFreeDays();
+	}
+	
+	@StepGroup
+	public void searchUser(String lastName,String firstName){
+		openVacationReportTab();
+		typeName(lastName, firstName);
+		clickSearchButton();
+	}
+	
 }

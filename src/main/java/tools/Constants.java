@@ -10,5 +10,6 @@ public class Constants {
 	public static final String DM_PASSWORD ="car5zoo";
 	public static final String APPROVE_MSG="Approved";
 	public static final String PENDING_MSG="Pending";
-	public static final String LAST_NAME="vandor";
+	public static final String LAST_NAME="Vandor";
+	public static final String FIRST_NAME="Daniela";
 }
