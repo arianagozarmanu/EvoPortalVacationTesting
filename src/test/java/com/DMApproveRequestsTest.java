@@ -1,17 +1,18 @@
 package com;
 
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import tools.Constants;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.CreateVacationSteps;
+import tools.Constants;
+
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
 import com.steps.UserSteps;
@@ -49,7 +50,7 @@ public class DMApproveRequestsTest {
 		endUser.enters_data(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		endUser.signsIn();
 		dmInboxAccessSteps.openVacationTab();
-		dmApproveSteps.show_75_requests_per_page();
+		//dmApproveSteps.show_75_requests_per_page();
 		dmApproveSteps.request_is_approved();
 	}
 }
