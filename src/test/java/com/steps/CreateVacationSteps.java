@@ -1,8 +1,11 @@
 package com.steps;
 
+import java.text.ParseException;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
+
 
 
 
@@ -62,7 +65,7 @@ public class CreateVacationSteps extends ScenarioSteps {
 	}
 	
 	@StepGroup
-	public void convertDateIntoString(){
+	public void convertDateIntoString() throws ParseException{
 		datePickerPage.convertMonth();
 		datePickerPage.convertDate();
 		
