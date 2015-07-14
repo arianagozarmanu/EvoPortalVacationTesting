@@ -38,5 +38,9 @@ public class DatePickerPage extends PageObject {
 		waitABit(1000);
 
 	}
+	
+	public void convertDate(){
+		
+	}
 
 }
