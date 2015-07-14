@@ -48,7 +48,7 @@ public class DMApproveRequestsTest {
 		endUser.enters_data(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		endUser.signsIn();
 		dmInboxAccessSteps.openVacationTab();
-		//dmApproveSteps.show_75_requests_per_page();
+		// dmApproveSteps.show_75_requests_per_page();
 		dmApproveSteps.request_is_approved();
 	}
 }

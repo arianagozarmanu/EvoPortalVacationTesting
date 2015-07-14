@@ -14,22 +14,22 @@ public class AssignedToMeRequestsPage extends PageObject {
 
 	@FindBy(css = "tr[class*='portlet-section-body results-row last']")
 	private WebElementFacade lastRowFromTableRequest1;
-	
+
 	@FindBy(css = "tr[class*='portlet-section-alternate results-row alt last']")
 	private WebElementFacade lastRowFromTableRequest2;
 
 	@FindBy(css = "tr[class*='portlet-section-body results-row last'] input[name*='rowIds']")
 	private WebElementFacade lastRowCheckBox1;
-	
+
 	@FindBy(css = "tr[class*='portlet-section-alternate results-row alt last'] input[name*='rowIds']")
 	private WebElementFacade lastRowCheckBox2;
-	
+
 	@FindBy(css = "div[class='portlet-msg-success']")
 	private WebElementFacade succesMessage;
 
 	@FindBy(css = "tr[class*='portlet-section-body results-row last'] td:nth-child(3) a")
 	private WebElementFacade dataElement1;
-	
+
 	@FindBy(css = "tr[class*='portlet-section-alternate results-row alt last'] td:nth-child(3) a")
 	private WebElementFacade dataElement2;
 
@@ -42,20 +42,19 @@ public class AssignedToMeRequestsPage extends PageObject {
 	private static String data;
 
 	public void checkLastRequest() {
-		boolean first=lastRowFromTableRequest1.isPresent();
-		boolean second=lastRowFromTableRequest2.isPresent();
-		boolean exist = first || second ;
-		
+		boolean first = lastRowFromTableRequest1.isPresent();
+		boolean second = lastRowFromTableRequest2.isPresent();
+		boolean exist = first || second;
+
 		if (exist) {
-			if(first) {
+			if (first) {
 				lastRowCheckBox1.click();
 				data = dataElement1.getText();
-			}
-			else {
+			} else {
 				lastRowCheckBox2.click();
 				data = dataElement2.getText();
 			}
-			
+
 			System.out.println(data);
 		} else {
 			Assert.assertTrue("Last row of the table does not appear", exist);
@@ -69,16 +68,16 @@ public class AssignedToMeRequestsPage extends PageObject {
 	public void show75RequestsPerPage() {
 		maxRequestsPerPage.click();
 	}
-	
-	public void clickNextPageButton(){
+
+	public void clickNextPageButton() {
 		nextPageButton.click();
 	}
 
-	public void checkApproveRequest(){
-		boolean exists=checkIfApproveRequestExists();
+	public void checkApproveRequest() {
+		boolean exists = checkIfApproveRequestExists();
 		Assert.assertTrue("Request does not exist!", exists);
 	}
-	
+
 	public boolean checkIfApproveRequestExists() {
 
 		while (nextPageButton.isPresent()) {
