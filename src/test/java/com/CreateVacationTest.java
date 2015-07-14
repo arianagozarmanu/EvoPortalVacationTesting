@@ -46,9 +46,7 @@ public class CreateVacationTest {
     
     @Test
     public void create_Vacation() throws ParseException {
-        endUser.is_the_home_page();
-		endUser.enters_data(Constants.VALID_SCREEN_NAME,Constants.VALID_PASSWORD);
-		endUser.signsIn();
+		endUser.logIn(Constants.VALID_SCREEN_NAME,Constants.VALID_PASSWORD);
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
 		employee.startingDate();

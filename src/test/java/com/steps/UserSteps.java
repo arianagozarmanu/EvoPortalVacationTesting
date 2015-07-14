@@ -55,7 +55,16 @@ public class UserSteps extends ScenarioSteps {
     
     @StepGroup
     public void enters_data(String term1, String term2) {
-        entersUserName(term1);
+    	entersUserName(term1);
         entersPassword(term2);
+    }
+    
+    @StepGroup
+    public void logIn(String username, String password)
+    {
+    	is_the_home_page();
+    	enters_data(username,password);
+    	signsIn();
+    	
     }
    }

@@ -70,5 +70,16 @@ public class CreateVacationSteps extends ScenarioSteps {
 		datePickerPage.convertDate();
 		
 	}
+	
+	@StepGroup
+	public void createNewRequest(int startYear, String startMonth, int startDay, int endYear, String endMonth, int endDay) throws ParseException{
+		openNewVacationRequestTab();
+		startingDate();
+		selectDate(startYear, startMonth, startDay);
+		convertDateIntoString();
+		endingDate();
+		selectDate(endYear, endMonth, endDay);
+		saveTheRequest();
+	}
 
 }
