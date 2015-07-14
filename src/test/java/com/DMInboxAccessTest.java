@@ -30,7 +30,7 @@ public class DMInboxAccessTest {
     @Issue("InboxAccessing")
     
     @Test
-    public void DM_can_access_inbox_item(){
+    public void dM_can_access_inbox_item(){
     	endUser.is_the_home_page();
     	endUser.enters_data(Constants.DM_SCREEN_NAME, Constants.DM_PASSWORD);
     	endUser.signsIn();
