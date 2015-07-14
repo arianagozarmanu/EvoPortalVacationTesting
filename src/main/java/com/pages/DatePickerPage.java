@@ -1,6 +1,10 @@
 package com.pages;
 
 import java.io.Console;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 import net.serenitybdd.core.pages.PageObject;
 
@@ -12,6 +16,8 @@ public class DatePickerPage extends PageObject {
 	private static int year;
 	private static int day;
 	private static String month;
+	
+	private static int monthInt;
 	
 	public AssignedToMeRequestsPage dataSet;
 	
@@ -53,53 +59,16 @@ public class DatePickerPage extends PageObject {
 
 	}
 	
-	public void convertMonth() {
-		switch (month) {
-
-		case ("Jan"):
-			month = "01";
-
-		case ("Feb"):
-			month = "02";
-
-		case ("Mar"):
-			month = "03";
-
-		case ("Apr"):
-			month = "04";
-
-		case ("May"):
-			month = "05";
-
-		case ("Jun"):
-			month = "06";
-
-		case ("Jul"):
-			month = "07";
-
-		case ("Aug"):
-			month = "08";
-
-		case ("Sep"):
-			month = "09";
-
-		case ("Oct"):
-			month = "10";
-
-		case ("Nov"):
-			month = "11";
-
-		case ("Dec"):
-			month = "12";
-
-		default:
-			System.out.println("Error!  The month is not valid!");
-
-		}
+	public void convertMonth() throws ParseException {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new SimpleDateFormat("MMM").parse(month));
+		monthInt = cal.get(Calendar.MONTH) + 1;
+		System.out.println(monthInt);
 		
 	}
 	public void convertDate(){
-		String date = day+ "/"+ month + "/" + year;
+		String date = day+ "/"+ monthInt + "/" + year;
+		System.out.println(date);
 		dataSet.setData(date);
 	}
 }
