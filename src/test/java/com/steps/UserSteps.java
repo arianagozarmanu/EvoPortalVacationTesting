@@ -31,6 +31,7 @@ public class UserSteps extends ScenarioSteps {
 
     @Step
     public void is_the_home_page() {
+    	getDriver().manage().window().maximize();
         loginPage.open();
     }
 

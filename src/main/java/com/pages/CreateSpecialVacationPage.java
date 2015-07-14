@@ -19,7 +19,7 @@ public class CreateSpecialVacationPage extends PageObject {
     @FindBy(css = "align-to-left vacation-icon status-icon")
     private WebElementFacade statusOfRequest;
     
-    public void requestSpecialvacation() {
+    public void requestSpecialVacation() {
     	newSpecialVacation.click();
     }
     
@@ -34,5 +34,6 @@ public class CreateSpecialVacationPage extends PageObject {
     	}
     	Assert.assertTrue("Child Birth Vacation request created", found);
     }
+		
 }
     
