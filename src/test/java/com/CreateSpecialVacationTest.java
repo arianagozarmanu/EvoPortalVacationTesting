@@ -50,9 +50,9 @@ public class CreateSpecialVacationTest {
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
 		employee.startingDate();
-		employee.selectDate(2015, "Aug", 19);
+		employee.selectDate(2015, "Oct", 19);
 		employee.endingDate();
-		employee.selectDate(2015, "Aug", 20);
+		employee.selectDate(2015, "Oct", 20);
 		specialRequest.selectSpecialVacation();
 		specialRequest.takeVacationForChildBirth();
 		employee.saveTheRequest();

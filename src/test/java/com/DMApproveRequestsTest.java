@@ -1,15 +1,17 @@
 package com;
 
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import tools.Constants;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import tools.Constants;
 
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
