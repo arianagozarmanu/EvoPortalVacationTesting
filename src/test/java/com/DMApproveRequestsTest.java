@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.CreateVacationInAFreeLegalDaySteps;
+import com.steps.CreateVacationSteps;
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
 import com.steps.UserSteps;
