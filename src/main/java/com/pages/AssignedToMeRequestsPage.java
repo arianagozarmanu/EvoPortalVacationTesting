@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import tools.Constants;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -74,21 +73,19 @@ public class AssignedToMeRequestsPage extends PageObject {
 		nextPageButton.click();
 	}
 
-
-	public void checkApproveRequest(String status){
-		boolean exists=checkIfApproveRequestExists(status);
+	public void checkApproveRequest(String status) {
+		boolean exists = checkIfApproveRequestExists(status);
 		Assert.assertTrue("Request does not exist!", exists);
 	}
 
-	
 	public boolean checkIfApproveRequestExists(String status) {
-
+		List<WebElement> dataList;
+		List<WebElement> statusList;
 		while (nextPageButton.isPresent()) {
-			List<WebElement> dataList = getDriver()
-					.findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(1) a"));
-			List<WebElement> statusList = getDriver()
-					.findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
-			for (int i = 0; i < dataList.size(); i++) {
+			dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(1) a"));
+			statusList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
+			int dataListSize = dataList.size();
+			for (int i = 0; i < dataListSize; i++) {
 				if (dataList.get(i).getText().equals(data)) {
 					if (statusList.get(i).getText().equals(status)) {
 						return true;
@@ -100,10 +97,23 @@ public class AssignedToMeRequestsPage extends PageObject {
 			waitABit(500);
 			getDriver().navigate().refresh();
 		}
+
+		dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(1) a"));
+		statusList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
+		int dataListSize = dataList.size();
+		for (int i = 0; i < dataListSize; i++) {
+			if (dataList.get(i).getText().equals(data)) {
+				if (statusList.get(i).getText().equals(status)) {
+					return true;
+				}
+			}
+			System.out.println(dataList.get(i).getText());
+		}
+
 		return false;
 	}
-	
+
 	public void setData(String newData) {
-		data=newData;
+		data = newData;
 	}
 }
