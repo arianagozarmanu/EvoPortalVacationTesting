@@ -21,7 +21,7 @@ public class CreateVacationPage extends PageObject {
     @FindBy(css = ".aui-button-content [id*='saveButton']")
     private WebElementFacade saveRequest;
     
-    @FindBy(css = "a[href*='new-request&_evovacation_WAR_EvoVacationportlet_menuItem=my-requests']")
+    @FindBy(css = "div.carousel-slider li a[href*='menuItem=my-requests']")
     private WebElementFacade myRequests;
     
     @FindBy(css = ".portlet-msg-error")

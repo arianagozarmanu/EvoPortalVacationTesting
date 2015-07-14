@@ -1,7 +1,9 @@
 package com.steps;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
+
 
 
 
@@ -58,6 +60,12 @@ public class CreateVacationSteps extends ScenarioSteps {
 	{
 		createVacation.openMyRequestsTab();
 	}
-
+	
+	@StepGroup
+	public void convertDateIntoString(){
+		datePickerPage.convertMonth();
+		datePickerPage.convertDate();
+		
+	}
 
 }

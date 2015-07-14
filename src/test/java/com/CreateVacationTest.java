@@ -8,6 +8,7 @@ import net.thucydides.core.pages.Pages;
 
 
 
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,9 @@ import org.openqa.selenium.WebDriver;
 import tools.Constants;
 
 
+
 import com.steps.CreateVacationSteps;
+import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
 import com.steps.UserSteps;
 
@@ -34,7 +37,8 @@ public class CreateVacationTest {
     CreateVacationSteps employee; 
     @Steps
     DMInboxAccessSteps vacationTab;
-    
+    @Steps
+    DMApproveRequestsSteps validation;
     
     @Test
     public void create_Vacation() {
@@ -44,11 +48,16 @@ public class CreateVacationTest {
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
 		employee.startingDate();
-		employee.selectDate(2015, "Aug", 19);
+		employee.selectDate(2016, "Jul", 15);
+		
+		employee.convertDateIntoString();
+		
 		employee.endingDate();
-		employee.selectDate(2015, "Aug", 20);
+		employee.selectDate(2016, "Jul", 15);
 		employee.saveTheRequest();
 		employee.openMyRequestsTab();
+		validation.request_is_approved(Constants.PENDING_MSG);
+		endUser.signsOut();
     }
 
 } 
