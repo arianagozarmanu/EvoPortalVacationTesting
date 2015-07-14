@@ -36,16 +36,18 @@ public class AssignedToMeRequestsPage extends PageObject {
 	@FindBy(css = "select[class*='aui-field-input-menu'] option[value='75']")
 	private WebElementFacade maxRequestsPerPage;
 
-	@FindBy(css = "span[class*='aui-paginator-next-link']")
+	@FindBy(css = "a[class*='aui-paginator-link aui-paginator-next-link']")
 	private WebElementFacade nextPageButton;
 
 	private static String data;
 
 	public void checkLastRequest() {
-		boolean exist = lastRowFromTableRequest1.isPresent() || lastRowFromTableRequest2.isPresent();
+		boolean first=lastRowFromTableRequest1.isPresent();
+		boolean second=lastRowFromTableRequest2.isPresent();
+		boolean exist = first || second ;
 		
 		if (exist) {
-			if(lastRowFromTableRequest1.isPresent()) {
+			if(first) {
 				lastRowCheckBox1.click();
 				data = dataElement1.getText();
 			}
@@ -72,10 +74,14 @@ public class AssignedToMeRequestsPage extends PageObject {
 		nextPageButton.click();
 	}
 
-	public void checkIfApproveRequestExists() {
-		boolean exists = false;
-		
-		//while (nextPageButton.isPresent()) {  
+	public void checkApproveRequest(){
+		boolean exists=checkIfApproveRequestExists();
+		Assert.assertTrue("Request does not exist!", exists);
+	}
+	
+	public boolean checkIfApproveRequestExists() {
+
+		while (nextPageButton.isPresent()) {
 			List<WebElement> dataList = getDriver()
 					.findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(1) a"));
 			List<WebElement> statusList = getDriver()
@@ -83,13 +89,15 @@ public class AssignedToMeRequestsPage extends PageObject {
 			for (int i = 0; i < dataList.size(); i++) {
 				if (dataList.get(i).getText().equals(data)) {
 					if (statusList.get(i).getText().equals("Approved")) {
-						exists = true;
+						return true;
 					}
 				}
-				// System.out.println(dataList.get(i).getText());
+				System.out.println(dataList.get(i).getText());
 			}
-			//clickNextPageButton();
-		//}
-		Assert.assertTrue("Request does not exist!", exists);
+			clickNextPageButton();
+			waitABit(500);
+			getDriver().navigate().refresh();
+		}
+		return false;
 	}
 }
