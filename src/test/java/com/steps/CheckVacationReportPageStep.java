@@ -25,4 +25,19 @@ public class CheckVacationReportPageStep extends ScenarioSteps{
 	public void typeName(String lastName, String firstName){
 		vacReportPage.typeName(lastName,firstName);
 	}
+	
+	@Step
+	public void clickSearchButton(){
+		vacReportPage.clickSearchButton();
+	}
+	
+	@Step
+	public void accessUser(){
+		vacReportPage.accessUser();
+	}
+	
+	@Step
+	public void rejectOneRequest(String lastName, String firstName) {
+		vacReportPage.rejectOneRequest(lastName,firstName);
+	}
 }

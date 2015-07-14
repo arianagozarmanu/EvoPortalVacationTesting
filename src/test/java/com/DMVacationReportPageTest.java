@@ -46,10 +46,12 @@ public class DMVacationReportPageTest {
 		dmInboxAccessSteps.openVacationTab();
 		vacReportPage.openVacationReportTab();
 		vacReportPage.typeName(Constants.LAST_NAME, Constants.VALID_SCREEN_NAME);
+		vacReportPage.clickSearchButton();
+		vacReportPage.accessUser();
 		vacReportPage.getTotalFreeDays();
 		dmInboxAccessSteps.accessInbox();
-		dmApproveSteps.check_last_request();
-		//retine 
+		vacReportPage.rejectOneRequest(Constants.LAST_NAME, Constants.VALID_SCREEN_NAME);
+		//cauta daniela vandor
 		//click_reject();
 		//dmApproveSteps.succes_message_occurs();
 		//Vacations_Report
