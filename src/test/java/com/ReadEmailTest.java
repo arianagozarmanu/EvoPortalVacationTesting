@@ -4,11 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.CreateSpecialVacationSteps;
-import com.steps.CreateVacationSteps;
-import com.steps.DMInboxAccessSteps;
 import com.steps.EmailConnectingSteps;
-import com.steps.UserSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -18,22 +14,20 @@ import net.thucydides.core.pages.Pages;
 import tools.Constants;
 
 @RunWith(SerenityRunner.class)
+public class ReadEmailTest {
 
-public class ReadEmailTest{
+	@Managed(uniqueSession = true)
+	public WebDriver webdriver;
 
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+	@ManagedPages(defaultUrl = Constants.EVO_URL)
+	public Pages pages;
 
-    @ManagedPages(defaultUrl = Constants.EVO_URL)
-    public Pages pages;
+	@Steps
+	EmailConnectingSteps email;
 
-    @Steps
-    EmailConnectingSteps email;
-
-    @Test
-    public void readEmail() {
-    	email.readEmail();
-    }
-
+	@Test
+	public void readEmail() {
+		email.readEmail(Constants.SITE, Constants.EVO_MAIL_ADDRESS, Constants.EVO_MAIL_PASSWORD);
+	}
 
 }

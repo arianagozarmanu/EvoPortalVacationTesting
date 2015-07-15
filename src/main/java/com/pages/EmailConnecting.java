@@ -17,14 +17,14 @@ public class EmailConnecting extends PageObject{
 	public static String subject;
 	public static String content;
 	
-	public void readLastEmail() {
+	public void readLastEmail(String site,String email, String password) {
 	//public static void main(String[] args){
 		Properties props = new Properties();
 		props.setProperty("mail.store.protocol", "imaps");
 		try {
             Session session = Session.getInstance(props, null);
             Store store = session.getStore();
-            store.connect("mail.evozon.com", "daniela.vandor@evozon.com", Constants.EVO_MAIL_PASSWORD);
+            store.connect(site, email, password);
             Folder inbox = store.getFolder("INBOX");
             inbox.open(Folder.READ_ONLY);
             Message msg = inbox.getMessage(inbox.getMessageCount());
@@ -51,5 +51,7 @@ public class EmailConnecting extends PageObject{
         }
     
 	}
+	
+	
 
 }
