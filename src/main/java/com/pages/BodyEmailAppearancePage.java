@@ -1,6 +1,7 @@
 package com.pages;
 
 import java.io.*;
+import java.util.*;
 
 import org.junit.Assert;
 
@@ -20,9 +21,9 @@ public class BodyEmailAppearancePage extends PageObject {
 	private String contentPattern3 = "\n" + "<!-- " + "\n" + "<br/> <br/> " + "\n" + "\n" + "Cheers, " + "\n"
 			+ "<br /> " + "\n" + "The EvoPortal Team" + "\n" + "--><br/> <br/> Cheers, <br /> The EvoPortal Team";
 
-	public void vacationRequestEmployee() {
+	public void holidayVacationRequestEmployee(String startDate,String endDate) {
 		checkTheSubject();
-		checkTheContent();
+		checkTheContent(startDate,endDate);
 	}
 
 	public void checkTheSubject() {
@@ -47,7 +48,88 @@ public class BodyEmailAppearancePage extends PageObject {
 		}
 	}
 
-	public void checkTheContent() {
+	public static boolean compareFiles(String file1, String file2) {
+
+		boolean emailContentIsOk = false;
+
+		String lineA = null;
+		String lineB = null;
+
+		// lists of lines
+		List<String> list1 = new ArrayList<String>();
+		List<String> list2 = new ArrayList<String>();
+
+		// lists of characters
+		List<Character> charsList1 = new ArrayList<Character>();
+		List<Character> charsList2 = new ArrayList<Character>();
+
+		int i;
+
+		try {
+			BufferedReader br1 = new BufferedReader(new FileReader(file1));
+			BufferedReader br2 = new BufferedReader(new FileReader(file2));
+
+			while ((lineA = br1.readLine()) != null) {
+				list1.add(lineA);
+			}
+			while ((lineB = br2.readLine()) != null) {
+				list2.add(lineB);
+			}
+			br1.close();
+			br2.close();
+
+			// create list of characters from file1 (email content)
+			for (String x : list1) {
+				for (i = 0; i < x.length(); i++) {
+					charsList1.add(x.charAt(i));
+				}
+			}
+			// create list of characters from file1 (my result)
+			for (String y : list2) {
+				for (i = 0; i < y.length(); i++) {
+					charsList2.add(y.charAt(i));
+				}
+			}
+
+			int sizeL1 = charsList1.size();
+			int sizeL2 = charsList2.size();
+
+			System.out.println("Email Content has : " + sizeL1 + " characters");
+			System.out.println("My Result has : " + sizeL2 + " characters");
+			System.out.println();
+			System.out.println();
+
+			if (sizeL1 == sizeL2)
+				emailContentIsOk = true;
+
+			for (i = 0; emailContentIsOk && i < sizeL1; i++) {
+				try {
+					System.out.print("List 1 - position " + i + " - " + charsList1.get(i) + " | ");
+
+					if (!(charsList1.get(i).equals(charsList2.get(i)))) {
+						emailContentIsOk = false;
+						System.out.println();
+						System.out.println("Characters don't match at position " + i);
+					}
+
+					System.out.print(" List 2 - position " + i + " - " + charsList2.get(i));
+					System.out.println();
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return emailContentIsOk;
+	}
+
+	public void checkTheContent(String startDate,String endDate) {
 		String result = "";
 		String text = EmailConnecting.content;
 		writeToFile("C:/Users/arianagozarmanu/Desktop/EmailContent.txt", text);
@@ -59,55 +141,15 @@ public class BodyEmailAppearancePage extends PageObject {
 			i++;
 		}
 		name = name + "," + "\n";
-		result = name + contentPattern1 + Constants.START_DATA + " - " + Constants.END_DATA + strongPattern + brPattern
+		result = name + contentPattern1 + startDate + " - " + endDate + strongPattern + brPattern
 				+ contentPattern2 + "Ariana Gozar-Manu" + bPattern + contentPattern3 + "\n";
+		
+		System.out.println(result);
+		System.out.println();
 		writeToFile("C:/Users/arianagozarmanu/Desktop/MyContent.txt", result);
 
-		System.out.println("------My Result");
-		System.out.println(result);
-		System.out.println("------Email Content");
-		System.out.println(text);
-		System.out.println("------");
-
-		System.out.printf("My Result size = %d , Content size = %d ", result.length(), text.length());
-		i = 0;
-
-		System.out.printf("\n\nWhere texts didn't match anymore:\n");
-		while (text.charAt(i) == result.charAt(i)) {
-			System.out.print(text.charAt(i));
-			i++;
-		}
-
-		System.out.println();
-		System.out.printf("Next char in content=", text.charAt(i));
-		System.out.println();
-		System.out.printf("Next char in my result=", result.charAt(i));
-
-		System.out.println();
-		System.out.println("------Email Content");
-		System.out.println(text);
-
-		System.out.println("Characters splited by '|':");
-		System.out.println();
-		System.out.println("------Email Content");
-		i = 0;
-		while (i < text.length()) {
-			System.out.print(text.charAt(i));
-			System.out.print("|");
-			i++;
-		}
-		System.out.println();
-		System.out.println("------My Result");
-		i = 0;
-
-		while (i < result.length()) {
-			System.out.print(result.charAt(i));
-			System.out.print("|");
-			i++;
-		}
-		System.out.println();
-		Assert.assertTrue("Content is not correct!", text.equals(result));
-
+		Assert.assertTrue("Contents don't match!", compareFiles("C:/Users/arianagozarmanu/Desktop/EmailContent.txt",
+				"C:/Users/arianagozarmanu/Desktop/MyContent.txt"));
 	}
 
 	public void emailWasCreated(String data) {
