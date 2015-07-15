@@ -8,6 +8,7 @@ import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Store;
 import net.serenitybdd.core.pages.PageObject;
+import tools.Constants;
 
 
 public class EmailConnecting extends PageObject{
@@ -23,7 +24,7 @@ public class EmailConnecting extends PageObject{
 		try {
             Session session = Session.getInstance(props, null);
             Store store = session.getStore();
-            store.connect("mail.evozon.com", "daniela.vandor@evozon.com", "Mdanielle09.");
+            store.connect("mail.evozon.com", "daniela.vandor@evozon.com", Constants.EVO_MAIL_PASSWORD);
             Folder inbox = store.getFolder("INBOX");
             inbox.open(Folder.READ_ONLY);
             Message msg = inbox.getMessage(inbox.getMessageCount());

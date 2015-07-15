@@ -1,0 +1,90 @@
+Holiday Approve:
+
+Wed Jul 15 10:48:03 EEST 2015
+Vacation Request Approved
+Dear Daniela, <br/> <br/>Your Vacation Request in interval: <strong>24/November/2016</strong> - <strong>24/November/2016</strong> has been <strong>Approved</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team
+
+
+Vacation without payment request:
+
+Wed Jul 15 11:16:06 EEST 2015
+You have submitted a new Vacation Request
+Dear Daniela,
+<br /> <br />
+
+
+			You have submitted a new Vacation Request. Your holiday interval is: <strong>21/04/2021 - 21/04/2021</strong>.
+		<br />
+					Please check if the request was approved before going on holiday, if not please contact your vacation approver, <b>Ariana Gozar-Manu</b>.
+			
+
+
+<!-- 
+<br/> <br/> 
+
+Cheers, 
+<br /> 
+The EvoPortal Team
+--><br/> <br/> Cheers, <br /> The EvoPortal Team
+
+
+Special vacation request:
+
+Wed Jul 15 11:18:06 EEST 2015
+You have submitted a new Vacation Request
+Dear Daniela,
+<br /> <br />
+
+
+			You have submitted a new Vacation Request. Your holiday interval is: <strong>22/08/2022 - 22/08/2022</strong>.
+		<br />
+					Please check if the request was approved before going on holiday, if not please contact your vacation approver, <b>Ariana Gozar-Manu</b>.
+			
+
+
+<!-- 
+<br/> <br/> 
+
+Cheers, 
+<br /> 
+The EvoPortal Team
+--><br/> <br/> Cheers, <br /> The EvoPortal Team
+
+Special vacation request - DM:
+
+Wed Jul 15 11:18:06 EEST 2015
+New Vacation Request submitted by Daniela Vandor
+Dear Ariana,
+<br /> <br />
+
+
+	<b>Daniela Vandor</b> has submitted a <i>Vacation Request</i>.
+	<br />
+
+
+			The user will be on vacation in the following period: <strong>22/08/2022 - 22/08/2022</strong>.
+		<br />
+	
+			Please approve or reject this <a href='http://172.22.4.88:9091/vacation?p_p_auth=Uuv3AEXD&p_p_id=evovacation_WAR_EvoVacationportlet&p_p_lifecycle=0&_evovacation_WAR_EvoVacationportlet_menuItem=inbox&_evovacation_WAR_EvoVacationportlet_inboxState=inbox-view-vacation&_evovacation_WAR_EvoVacationportlet_backMenuItem=inbox&_evovacation_WAR_EvoVacationportlet_vacationId=20711'> here </a>.
+		<br />
+	
+<!--
+<br/> <br/> 
+Cheers, 
+<br /> 
+The EvoPortal Team
+--><br/> <br/> Cheers, <br /> The EvoPortal Team
+
+Special vacation - reject - DM:
+
+Wed Jul 15 11:21:37 EEST 2015
+Daniela Vandor Vacation Request Rejected
+Dear Ariana, <br/> <br/>The Vacation Request submitted by <strong>Daniela Vandor</strong> (in interval: <strong>22/August/2022</strong> - <strong>22/August/2022</strong>) has been <strong>Rejected</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team
+
+Special vacation - reject - employee:
+
+Wed Jul 15 11:21:37 EEST 2015
+Vacation Request Rejected
+Dear Daniela Vandor, <br/> <br/>The Vacation Request you have submitted for the interval: <strong>22/August/2022</strong> - <strong>22/August/2022</strong> has been <strong>Rejected</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team
+
+

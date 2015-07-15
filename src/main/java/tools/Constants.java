@@ -19,4 +19,5 @@ public class Constants {
 	public static final int REQUEST_END_YEAR=2019;
 	public static final int REQUEST_END_DAY=5;
 	public static final String REQUEST_END_MONTH="Jun";
+	public static final String EVO_MAIL_PASSWORD="Mdanielle09.";
 }
