@@ -19,9 +19,11 @@ public class Constants {
 	public static final int REQUEST_END_YEAR=2019;
 	public static final int REQUEST_END_DAY=5;
 	public static final String REQUEST_END_MONTH="Jun";
-	public static final String START_DATA="26/12/2016";
-	public static final String END_DATA="26/12/2016";
+	public static final String START_DATA="03/05/2018";
+	public static final String END_DATA="03/05/2018";
 	public static final String EVO_MAIL_PASSWORD="Mdanielle09.";
+	public static final String EVO_MAIL_DM_PASSWORD="Car5Zoo@";
 	public static final String SITE="mail.evozon.com";
 	public static final String EVO_MAIL_ADDRESS="daniela.vandor@evozon.com";
+	public static final String EVO_MAIL_DM_ADDRESS="ariana.gozarmanu@evozon.com";
 }

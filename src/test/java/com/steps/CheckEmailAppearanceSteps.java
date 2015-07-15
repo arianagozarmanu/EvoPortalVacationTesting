@@ -24,4 +24,9 @@ public class CheckEmailAppearanceSteps extends ScenarioSteps {
 	public void checkEmployeeRequest() {
 		emailApp.vacationRequestEmployee();
 	}
+	
+	@Step
+	public void emailWasReceived(String data){
+		emailApp.emailWasCreated(data);
+	}
 }
