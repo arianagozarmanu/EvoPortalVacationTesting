@@ -150,7 +150,7 @@ public class AssignedToMeRequestsPage extends PageObject {
 
 		return false;
 	}
-	
+	//If the Vacation created in a free day appears in the Inbox, then the test must be failed
 	public void checkApproveRequestOnFreeDay(String type) {
 		boolean exists = !checkIfVacationRequestOnAFreeExists(type);
 		Assert.assertTrue("Request does exist!", exists);
