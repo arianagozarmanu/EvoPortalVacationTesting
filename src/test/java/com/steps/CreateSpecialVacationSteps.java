@@ -29,6 +29,18 @@ public class CreateSpecialVacationSteps extends ScenarioSteps {
 	{
 		createSpecialVacation.VacationForChildBirth();
 	}
+	
+	@Step
+	public void takeVacationForMarriage()
+	{
+		createSpecialVacation.VacationForMarriage();
+	}
+	
+	@Step
+	public void takeVacationForFuneral()
+	{
+		createSpecialVacation.VacationForFuneral();
+	}
 
 	@Step
 	public void verifyIfSpecialVacationCreated()
