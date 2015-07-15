@@ -29,4 +29,10 @@ public class CheckEmailAppearanceSteps extends ScenarioSteps {
 	public void emailWasReceived(String data){
 		emailApp.emailWasCreated(data);
 	}
+	
+	//employee
+	@Step
+	public void emailWasReceivedEmployee(String data){
+		emailApp.emailWasCreatedEmployee(data);
+	}
 }

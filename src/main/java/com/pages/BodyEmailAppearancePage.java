@@ -11,6 +11,7 @@ public class BodyEmailAppearancePage extends PageObject {
 
 	private String subjectPattern = "You have submitted a new Vacation Request";
 	private String receivePattern = "New Vacation Request submitted";
+	
 	private String contentPattern1 = "<br /> <br />" + "\n" + "\n" + "\n"
 			+ "			You have submitted a new Vacation Request. Your holiday interval is: <strong>";
 	private String strongPattern = "</strong>." + "\n";
@@ -46,6 +47,7 @@ public class BodyEmailAppearancePage extends PageObject {
 				}
 		}
 	}
+	
 
 	public void checkTheContent() {
 		String result = "";
@@ -113,6 +115,12 @@ public class BodyEmailAppearancePage extends PageObject {
 	public void emailWasCreated(String data) {
 		System.out.println(data);
 		Assert.assertTrue("No email about a vacation submitted!", EmailConnecting.subject.contains(receivePattern));
+		Assert.assertTrue("No request submitted in " + data + " !", EmailConnecting.content.contains(data));
+	}
+	//for Employee
+	public void emailWasCreatedEmployee(String data) {
+		System.out.println(data);
+		Assert.assertTrue("No email about a vacation submitted!", EmailConnecting.subject.contains(subjectPattern));
 		Assert.assertTrue("No request submitted in " + data + " !", EmailConnecting.content.contains(data));
 	}
 
