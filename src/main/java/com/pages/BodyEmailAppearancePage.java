@@ -3,6 +3,7 @@ package com.pages;
 import org.junit.Assert;
 
 import net.serenitybdd.core.pages.PageObject;
+import tools.Constants;
 
 public class BodyEmailAppearancePage extends PageObject {
 
@@ -36,7 +37,7 @@ public class BodyEmailAppearancePage extends PageObject {
 			i++;
 		}
 		name = name + "," + "\n";
-		result = name + contentPattern1 + "13/08/2020" + " - " + "13/08/2020" + strongPattern + brPattern
+		result = name + contentPattern1 + Constants.START_DATA + " - " + Constants.END_DATA + strongPattern + brPattern
 				+ contentPattern2 + "Ariana Gozar-Manu" + bPattern + contentPattern3 + "\n";
 
 		System.out.println("------My Result");
