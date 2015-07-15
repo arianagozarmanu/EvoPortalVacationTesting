@@ -27,6 +27,15 @@ public class CreateVacationPage extends PageObject {
     @FindBy(css = ".portlet-msg-error")
     private WebElementFacade createVacationError;
     
+    @FindBy(css = "[id*='_CF']")
+    private WebElementFacade vacationWithoutPayment;
+    
+    @FindBy(css = "[id*='_CM']")
+    private WebElementFacade sickLeave;
+    
+    @FindBy(css = "[id*='_ML']")
+    private WebElementFacade maternityLeave;
+    
     public void openNewVacationRequestTab() {
     	newVacationRequest.click();
     }
@@ -53,6 +62,18 @@ public class CreateVacationPage extends PageObject {
     		found = true;
     	}
     	Assert.assertTrue("You already have a vacation set up overlaping the selected time range", found);
+    }
+    
+    public void createVacationWithoutPayment(){
+    	vacationWithoutPayment.click();
+    }
+    
+    public void createSickLeave(){
+    	sickLeave.click();
+    }
+    
+    public void createMaternityLeave(){
+    	maternityLeave.click();
     }
    
   

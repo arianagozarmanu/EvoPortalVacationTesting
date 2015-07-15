@@ -64,6 +64,21 @@ public class CreateVacationSteps extends ScenarioSteps {
 		createVacation.openMyRequestsTab();
 	}
 	
+	@Step
+	public void createVacationWithoutPayment(){
+		createVacation.createVacationWithoutPayment();
+	}
+	
+	@Step
+	public void createSickLeave(){
+		createVacation.createSickLeave();
+	}
+	
+	@Step
+	public void createMaternityLeave(){
+		createVacation.createMaternityLeave();
+	}
+	
 	@StepGroup
 	public void convertDateIntoString() throws ParseException{
 		datePickerPage.convertMonth();
