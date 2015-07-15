@@ -16,7 +16,7 @@ public class EmailConnectingSteps  extends ScenarioSteps {
 	
 	@Step
 	public void readEmail(){
-		//email.readMyEmail();
+		email.readLastEmail();
 	}
 	
 }
