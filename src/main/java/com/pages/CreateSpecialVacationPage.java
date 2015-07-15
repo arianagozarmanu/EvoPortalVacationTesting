@@ -16,7 +16,7 @@ public class CreateSpecialVacationPage extends PageObject {
     @FindBy(css = "[name='specialReason'] [value='CHILD_BIRTH']")
     private WebElementFacade childBirthVacation;
     
-    @FindBy(css = "align-to-left vacation-icon status-icon")
+    @FindBy(css = ".portlet-msg-success")
     private WebElementFacade statusOfRequest;
     
     public void requestSpecialVacation() {

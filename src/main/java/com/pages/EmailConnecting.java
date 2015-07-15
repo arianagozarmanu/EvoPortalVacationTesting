@@ -23,7 +23,7 @@ public class EmailConnecting {
             for (Address address : in) {
                 System.out.println("FROM:" + address.toString());
             }
-            //Multipart mp = (Multipart) msg.getContent();
+            //Multipart mp = (Multipart) msg.getContent(); -this is for attachments 
             //BodyPart bp = mp.getBodyPart(0);
             System.out.println("SENT DATE:" + msg.getSentDate());
             System.out.println("SUBJECT:" + msg.getSubject());

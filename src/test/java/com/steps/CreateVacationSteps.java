@@ -79,7 +79,6 @@ public class CreateVacationSteps extends ScenarioSteps {
 		convertDateIntoString();
 		endingDate();
 		selectDate(endYear, endMonth, endDay);
-		saveTheRequest();
 	}
 
 }
