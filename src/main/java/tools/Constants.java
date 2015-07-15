@@ -12,4 +12,11 @@ public class Constants {
 	public static final String PENDING_MSG="Pending";
 	public static final String LAST_NAME="Vandor";
 	public static final String FIRST_NAME="Daniela";
+	public static final int REQUEST_START_YEAR=2019;
+	public static final int REQUEST_START_DAY=5;
+	public static final String REQUEST_START_MONTH="Jun";
+	//Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
+	public static final int REQUEST_END_YEAR=2019;
+	public static final int REQUEST_END_DAY=5;
+	public static final String REQUEST_END_MONTH="Jun";
 }
