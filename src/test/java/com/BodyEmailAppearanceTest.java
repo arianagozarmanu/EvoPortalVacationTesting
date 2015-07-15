@@ -46,17 +46,15 @@ public class BodyEmailAppearanceTest {
 	public EmailConnectingSteps emailSteps;
 
 	@Test
-	public void vacation_report_updates_correctly() throws ParseException {
+	public void holiday_vacation_request_email_follows_the_pattern() throws ParseException {
 
 		//create a new request
-		//endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
-		//dmInboxAccessSteps.openVacationTab();
-		//newRequest.createNewRequest(Constants.REQUEST_START_YEAR, Constants.REQUEST_START_MONTH,
-		//		Constants.REQUEST_START_DAY, Constants.REQUEST_END_YEAR, Constants.REQUEST_END_MONTH,
-		//		Constants.REQUEST_END_DAY);
-		//endUser.signsOut();
+		endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
+		dmInboxAccessSteps.openVacationTab();
+		newRequest.createNewRequest(2018,"May",3,2018,"May",3);
+		endUser.signsOut();
 		emailSteps.readEmail(Constants.SITE, Constants.EVO_MAIL_ADDRESS, Constants.EVO_MAIL_PASSWORD);
-		emailApp.checkEmployeeRequest();
+		emailApp.checkHolidayRequest("03/05/2018","03/05/2018");
 		
 	}
 }

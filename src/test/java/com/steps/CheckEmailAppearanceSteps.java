@@ -21,8 +21,8 @@ public class CheckEmailAppearanceSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void checkEmployeeRequest() {
-		emailApp.vacationRequestEmployee();
+	public void checkHolidayRequest(String startDate,String endDate) {
+		emailApp.holidayVacationRequestEmployee(startDate,endDate);
 	}
 	
 	@Step
