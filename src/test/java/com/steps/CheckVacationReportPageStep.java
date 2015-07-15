@@ -1,63 +1,63 @@
 package com.steps;
 
-import com.pages.AssignedToMeRequestsPage;
-import com.pages.DMFirstPage;
 import com.pages.DMVacationsReportPage;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
-import tools.Constants;
 
-public class CheckVacationReportPageStep extends ScenarioSteps{
+public class CheckVacationReportPageStep extends ScenarioSteps {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	DMVacationsReportPage vacReportPage;
-	
+
 	@Step
-	public void openVacationReportTab(){
+	public void openVacationReportTab() {
 		vacReportPage.openVacationReportTab();
 	}
-	
+
 	@Step
-	public void getTotalFreeDays(){
+	public void getTotalFreeDays() {
 		vacReportPage.getTotalFreeDays();
 	}
-	
+
 	@Step
-	public void typeName(String lastName, String firstName){
-		vacReportPage.typeName(lastName,firstName);
+	public void typeName(String lastName, String firstName) {
+		vacReportPage.typeName(lastName, firstName);
 	}
-	
+
 	@Step
-	public void clickSearchButton(){
+	public void clickSearchButton() {
 		vacReportPage.clickSearchButton();
 	}
-	
+
 	@Step
-	public void accessUser(){
+	public void accessUser() {
 		vacReportPage.accessUser();
 	}
-	
+
 	@Step
-	public void clickReject(){
+	public void clickReject() {
 		vacReportPage.clickRejectButton();
 	}
-	
+
 	@Step
 	public void checkOneRequest(String lastName, String firstName) {
-		vacReportPage.checkOneRequest(lastName,firstName);
+		vacReportPage.checkOneRequest(lastName, firstName);
 	}
-	
+
 	@Step
-	public void compareTotalFreeDays(){
+	public void compareTotalFreeDays() {
 		vacReportPage.compareTotalFreeDays();
 	}
-	
+
 	@StepGroup
-	public void searchUser(String lastName,String firstName){
+	public void searchUser(String lastName, String firstName) {
 		openVacationReportTab();
 		typeName(lastName, firstName);
 		clickSearchButton();
 	}
-	
+
 }
