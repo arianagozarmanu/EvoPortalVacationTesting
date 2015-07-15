@@ -40,15 +40,21 @@ public class DMVacationReportPageTest {
 	public CheckVacationReportPageStep vacReportPage;
 	@Steps
 	public CreateVacationSteps newRequest;
-	
+
 	@Issue("DM Vacation Report Test")
 
 	@Test
 	public void vacation_report_updates_correctly() throws ParseException {
+		
+		//create a new request
 		endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		dmInboxAccessSteps.openVacationTab();
-		newRequest.createNewRequest(2017, "Jul", 05, 2017, "Jul", 05);
+		newRequest.createNewRequest(Constants.REQUEST_START_YEAR, Constants.REQUEST_START_MONTH,
+				Constants.REQUEST_START_DAY, Constants.REQUEST_END_YEAR, Constants.REQUEST_END_MONTH,
+				Constants.REQUEST_END_DAY);
 		endUser.signsOut();
+		
+		//get total free days for a gived name - employee
 		endUser.logIn(Constants.DM_SCREEN_NAME, Constants.DM_PASSWORD);
 		dmInboxAccessSteps.openVacationTab();
 		vacReportPage.openVacationReportTab();
@@ -56,10 +62,14 @@ public class DMVacationReportPageTest {
 		vacReportPage.clickSearchButton();
 		vacReportPage.accessUser();
 		vacReportPage.getTotalFreeDays();
+		
+		//reject one of his request
 		dmInboxAccessSteps.accessInbox();
 		vacReportPage.checkOneRequest(Constants.LAST_NAME, Constants.FIRST_NAME);
 		vacReportPage.clickReject();
 		dmApproveSteps.succes_message_occurs();
+		
+		//verify his total free days 
 		vacReportPage.searchUser(Constants.LAST_NAME, Constants.FIRST_NAME);
 		vacReportPage.accessUser();
 		vacReportPage.compareTotalFreeDays();
