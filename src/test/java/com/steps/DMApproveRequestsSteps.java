@@ -35,6 +35,11 @@ public class DMApproveRequestsSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void request_is_approved_on_a_free_day(String type) {
+		approveRequest.checkApproveRequestOnFreeDay(type);
+	}
+	
+	@Step
 	public void show_75_requests_per_page() {
 		approveRequest.show75RequestsPerPage();
 	}
