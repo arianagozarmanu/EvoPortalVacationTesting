@@ -28,7 +28,7 @@ public class SignInTest {
 
 	String username, password;
 
-	@Issue("SignIn-ValidCredentials")
+	@Issue("SignIn")
 
 	@Test
 	public void sign_in() {

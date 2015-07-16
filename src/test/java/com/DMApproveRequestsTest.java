@@ -46,9 +46,7 @@ public class DMApproveRequestsTest {
 		//create a new request
 		endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		dmInboxAccessSteps.openVacationTab();
-		newRequest.createNewRequest(Constants.REQUEST_START_YEAR, Constants.REQUEST_START_MONTH,
-				Constants.REQUEST_START_DAY, Constants.REQUEST_END_YEAR, Constants.REQUEST_END_MONTH,
-				Constants.REQUEST_END_DAY);
+		newRequest.createNewRequest(2022,"Jun",07,2022,"Jun",07);
 		endUser.signsOut();
 		
 		//approve last request from Inbox first page
