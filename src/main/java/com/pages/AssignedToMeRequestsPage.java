@@ -81,11 +81,12 @@ public class AssignedToMeRequestsPage extends PageObject {
 	public boolean checkIfApproveRequestExists(String status) {
 		List<WebElement> dataList;
 		List<WebElement> statusList;
+		int i;
 		while (nextPageButton.isPresent()) {
 			dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(1) a"));
 			statusList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
 			int dataListSize = dataList.size();
-			for (int i = 0; i < dataListSize; i++) {
+			for (i = 0; i < dataListSize; i++) {
 				if (dataList.get(i).getText().equals(data)) {
 					if (statusList.get(i).getText().equals(status)) {
 						return true;
@@ -101,7 +102,7 @@ public class AssignedToMeRequestsPage extends PageObject {
 		dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(1) a"));
 		statusList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
 		int dataListSize = dataList.size();
-		for (int i = 0; i < dataListSize; i++) {
+		for (i = 0; i < dataListSize; i++) {
 			if (dataList.get(i).getText().equals(data)) {
 				if (statusList.get(i).getText().equals(status)) {
 					return true;
@@ -117,11 +118,12 @@ public class AssignedToMeRequestsPage extends PageObject {
 	public boolean checkIfVacationRequestOnAFreeDayExists(String type) {
 		List<WebElement> dataList;
 		List<WebElement> typeList;
+		int i;
 		while (nextPageButton.isPresent()) {
 			dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(3)"));
 			typeList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6)"));
 			int dataListSize = dataList.size();
-			for (int i = 0; i < dataListSize; i++) {
+			for (i = 0; i < dataListSize; i++) {
 				if (dataList.get(i).getText().equals(data)) {
 					if (typeList.get(i).getText().equals(type)) {
 						return true;
@@ -137,7 +139,7 @@ public class AssignedToMeRequestsPage extends PageObject {
 		dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(3)"));
 		typeList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6)"));
 		int typeListSize = typeList.size();
-		for (int i = 0; i < typeListSize; i++) {
+		for (i = 0; i < typeListSize; i++) {
 			if (typeList.get(i).getText().equals(data)) {
 				if (typeList.get(i).getText().equals(type)) {
 					return true;
