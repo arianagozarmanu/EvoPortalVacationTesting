@@ -22,7 +22,7 @@ public class UserEmailReceiveTest {
 	public Pages pages;
 
 	@Steps
-	UserSteps endUser;
+	LoginSteps user;
 	@Steps
 	CreateVacationSteps employee;
 	@Steps
@@ -32,12 +32,13 @@ public class UserEmailReceiveTest {
 	@Steps
 	EmailConnectingSteps emailCon;
 	@Steps
-	CheckEmailAppearanceSteps emailApp;
+	CheckEmailContentSteps emailApp;
 
 	@Test
-	public void test_DM_email_receiving() throws ParseException {
+	public void employee_receive_confirmation_email_for_requests() throws ParseException {
+		
 		// create a request
-		endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
+		user.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		vacationTab.openVacationTab();
 		//employee.openNewVacationRequestTab();
 		//employee.startingDate();
@@ -56,7 +57,7 @@ public class UserEmailReceiveTest {
 
 		// read email and check if the request was announced
 		emailCon.readEmail(Constants.SITE, Constants. EVO_MAIL_ADDRESS, Constants.EVO_MAIL_PASSWORD);
-		emailApp.emailWasReceivedEmployee("25/04/2017"); // -->write the request start date in format: DD/MM/YYYY										 
+		emailApp.checkIfEmailWasReceivedByEmployee("25/04/2017"); // -->write the request start date in format: DD/MM/YYYY										 
 													
 	}
 }

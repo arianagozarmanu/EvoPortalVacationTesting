@@ -45,7 +45,7 @@ public class CheckVacationReportPageStep extends ScenarioSteps {
 
 	@Step
 	public void checkOneRequest(String lastName, String firstName) {
-		vacReportPage.checkOneRequest(lastName, firstName);
+		vacReportPage.selectOneRequest(lastName, firstName);
 	}
 
 	@Step

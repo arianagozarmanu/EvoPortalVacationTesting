@@ -2,7 +2,6 @@ package com.steps;
 
 import com.pages.AssignedToMeRequestsPage;
 import com.pages.DMFirstPage;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -11,6 +10,7 @@ public class DMApproveRequestsSteps extends ScenarioSteps {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	AssignedToMeRequestsPage approveRequest;
 	DMFirstPage firstPage;
 
@@ -30,12 +30,12 @@ public class DMApproveRequestsSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void request_is_approved(String status) {
+	public void checkStatusOfTheRequest(String status) {
 		approveRequest.checkApproveRequest(status);
 	}
 	
 	@Step
-	public void request_is_approved_on_a_free_day(String type) {
+	public void findRequestsByType(String type) {
 		approveRequest.checkApproveRequestOnFreeDay(type);
 	}
 	

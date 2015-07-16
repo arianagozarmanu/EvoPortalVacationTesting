@@ -1,11 +1,9 @@
 package com.pages;
 
 import java.util.List;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -116,7 +114,7 @@ public class AssignedToMeRequestsPage extends PageObject {
 	}
 	
 	//check if vacation created in a free day appears in DM's Inbox 
-	public boolean checkIfVacationRequestOnAFreeExists(String type) {
+	public boolean checkIfVacationRequestOnAFreeDayExists(String type) {
 		List<WebElement> dataList;
 		List<WebElement> typeList;
 		while (nextPageButton.isPresent()) {
@@ -150,14 +148,13 @@ public class AssignedToMeRequestsPage extends PageObject {
 
 		return false;
 	}
+	
 	//If the Vacation created in a free day appears in the Inbox, then the test must be failed
 	public void checkApproveRequestOnFreeDay(String type) {
-		boolean exists = !checkIfVacationRequestOnAFreeExists(type);
+		boolean exists = !checkIfVacationRequestOnAFreeDayExists(type);
 		Assert.assertTrue("Request does exist!", exists);
 	}
 	
-	
-
 	public void setData(String newData) {
 		data = newData;
 	}

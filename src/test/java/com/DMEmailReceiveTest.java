@@ -22,7 +22,7 @@ public class DMEmailReceiveTest {
 	public Pages pages;
 
 	@Steps
-	UserSteps endUser;
+	LoginSteps endUser;
 	@Steps
 	CreateVacationSteps employee;
 	@Steps
@@ -32,18 +32,19 @@ public class DMEmailReceiveTest {
 	@Steps
 	EmailConnectingSteps emailCon;
 	@Steps
-	CheckEmailAppearanceSteps emailApp;
+	CheckEmailContentSteps emailApp;
 
 	@Test
-	public void test_DM_email_receiving() throws ParseException {
+	public void DM_receives_mail_notification() throws ParseException {
+		
 		// create a request
 		endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
-		employee.startingDate();
+		employee.openStartDateSelection();
 		employee.selectDate(2018, "May", 18); // -->write the request start date
 												// in format: YYYY, "---" , DD
-		employee.endingDate();
+		employee.openEndDateSelection();
 		employee.selectDate(2018, "May", 18); // -->write the request end date
 												// in format: YYYY, "---" , DD
 		employee.createSickLeave(); // choose what kind of vacation you want :
@@ -51,12 +52,11 @@ public class DMEmailReceiveTest {
 									// .createMaternityLeave() ,
 									// .createVacationWithoutPayment()
 								    // .createNewRequest() -> creates automatically a holiday vacation with data as parameter
-
 		employee.saveTheRequest();
 
 		// read email and check if the request was announced
 		emailCon.readEmail(Constants.SITE, Constants.EVO_MAIL_DM_ADDRESS, Constants.EVO_MAIL_DM_PASSWORD);
-		emailApp.emailWasReceived("18/05/2018"); // -->write the request start date in format: DD/MM/YYYY										 
+		emailApp.checkIfEmailWasReceived("18/05/2018"); // -->write the request start date in format: DD/MM/YYYY										 
 													
 	}
 }

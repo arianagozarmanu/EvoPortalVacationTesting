@@ -1,3 +1,7 @@
+/**
+ * Test if requests sent by users
+ * are approved by the DM
+ */
 package com;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -6,19 +10,15 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-
 import java.text.ParseException;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-
 import tools.Constants;
-
 import com.steps.CreateVacationSteps;
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
-import com.steps.UserSteps;
+import com.steps.LoginSteps;
 
 @RunWith(SerenityRunner.class)
 public class DMApproveRequestsTest {
@@ -30,7 +30,7 @@ public class DMApproveRequestsTest {
 	public Pages pages;
 
 	@Steps
-	public UserSteps endUser;
+	public LoginSteps endUser;
 	@Steps
 	public DMInboxAccessSteps dmInboxAccessSteps;
 	@Steps
@@ -51,7 +51,7 @@ public class DMApproveRequestsTest {
 				Constants.REQUEST_END_DAY);
 		endUser.signsOut();
 		
-		//approve one request
+		//approve last request from Inbox first page
 		endUser.logIn(Constants.DM_SCREEN_NAME, Constants.DM_PASSWORD);
 		dmInboxAccessSteps.openVacationTab();
 		dmInboxAccessSteps.accessInbox();
@@ -65,8 +65,8 @@ public class DMApproveRequestsTest {
 		endUser.enters_data(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		endUser.signsIn();
 		dmInboxAccessSteps.openVacationTab();
-		//dmApproveSteps.show_75_requests_per_page();
-		dmApproveSteps.request_is_approved(Constants.APPROVE_MSG);
+		dmApproveSteps.show_75_requests_per_page();
+		dmApproveSteps.checkStatusOfTheRequest(Constants.APPROVE_MSG);
 
 	}
 }

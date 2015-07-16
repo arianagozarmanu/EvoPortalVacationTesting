@@ -6,20 +6,16 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-
 import java.text.ParseException;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-
 import tools.Constants;
-
 import com.steps.CheckVacationReportPageStep;
 import com.steps.CreateVacationSteps;
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
-import com.steps.UserSteps;
+import com.steps.LoginSteps;
 
 @RunWith(SerenityRunner.class)
 public class DMVacationReportPageTest {
@@ -31,7 +27,7 @@ public class DMVacationReportPageTest {
 	public Pages pages;
 
 	@Steps
-	public UserSteps endUser;
+	public LoginSteps endUser;
 	@Steps
 	public DMInboxAccessSteps dmInboxAccessSteps;
 	@Steps
@@ -69,7 +65,7 @@ public class DMVacationReportPageTest {
 		vacReportPage.clickReject();
 		dmApproveSteps.succes_message_occurs();
 		
-		//verify his total free days 
+		//verify his total free days  
 		vacReportPage.searchUser(Constants.LAST_NAME, Constants.FIRST_NAME);
 		vacReportPage.accessUser();
 		vacReportPage.compareTotalFreeDays();

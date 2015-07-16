@@ -1,15 +1,9 @@
 package com.steps;
 
 import java.text.ParseException;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
-
-
-
-
-
 import com.pages.CreateVacationPage;
 import com.pages.DatePickerPage;
 
@@ -33,15 +27,14 @@ public class CreateVacationSteps extends ScenarioSteps {
 		createVacation.openNewVacationRequestTab();
 	}
 
-
 	@Step
-	public void startingDate()
+	public void openStartDateSelection()
 	{
 		createVacation.selectStartDate();
 	}
 
 	@Step
-	public void endingDate()
+	public void openEndDateSelection()
 	{
 		createVacation.selectEndDate();
 	}
@@ -81,7 +74,7 @@ public class CreateVacationSteps extends ScenarioSteps {
 	
 	@StepGroup
 	public void convertDateIntoString() throws ParseException{
-		datePickerPage.convertMonth();
+		datePickerPage.convertMonthToInteger();
 		datePickerPage.convertDate();
 		
 	}
@@ -89,10 +82,10 @@ public class CreateVacationSteps extends ScenarioSteps {
 	@StepGroup
 	public void createNewRequest(int startYear, String startMonth, int startDay, int endYear, String endMonth, int endDay) throws ParseException{
 		openNewVacationRequestTab();
-		startingDate();
+		openStartDateSelection();
 		selectDate(startYear, startMonth, startDay);
 		convertDateIntoString();
-		endingDate();
+		openEndDateSelection();
 		selectDate(endYear, endMonth, endDay);
 	}
 

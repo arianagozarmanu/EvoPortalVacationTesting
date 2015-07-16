@@ -5,7 +5,6 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
 
-
 public class CreateSpecialVacationPage extends PageObject {
 
     @FindBy(css = "[id*=_CS]")
@@ -39,7 +38,7 @@ public class CreateSpecialVacationPage extends PageObject {
     	funeralVacation.click();
     }
     
-    public void requestCreated(){
+    public void requestWasCreated(){
     	boolean found = false;
     	if(statusOfRequest.isPresent()){
     		found = true;

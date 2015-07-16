@@ -3,9 +3,7 @@ package com;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-
 import com.steps.EmailConnectingSteps;
-
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
@@ -26,8 +24,7 @@ public class ReadEmailTest {
 	EmailConnectingSteps email;
 
 	@Test
-	public void readEmail() {
+	public void read_email() {
 		email.readEmail(Constants.SITE, Constants.EVO_MAIL_ADDRESS, Constants.EVO_MAIL_PASSWORD);
 	}
-
 }

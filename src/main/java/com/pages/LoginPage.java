@@ -41,7 +41,7 @@ public class LoginPage extends PageObject {
     	signOutButton.click();
     }
     
-    public void checkIfButtonExists(){
+    public void checkIfVacationTabExists(){
     	boolean found = false;
     	if(vacationButton.isPresent()){
     		found = true;

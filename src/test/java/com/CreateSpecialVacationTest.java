@@ -5,24 +5,20 @@
 package com;
 
 import java.text.ParseException;
-
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-
 import tools.Constants;
-
 import com.steps.CreateSpecialVacationSteps;
 import com.steps.CreateVacationSteps;
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
-import com.steps.UserSteps;
+import com.steps.LoginSteps;
 
 @RunWith(SerenityRunner.class)
 public class CreateSpecialVacationTest {
@@ -34,7 +30,7 @@ public class CreateSpecialVacationTest {
 	public Pages pages;
 
 	@Steps
-	UserSteps endUser;
+	LoginSteps endUser;
 	@Steps
 	CreateVacationSteps employee;
 	@Steps
@@ -45,7 +41,7 @@ public class CreateSpecialVacationTest {
 	DMApproveRequestsSteps validation;
 
 	@Test
-	public void test_if_special_vacation_is_created() throws ParseException {
+	public void special_vacation_is_created() throws ParseException {
 		endUser.is_the_home_page();
 		endUser.enters_data(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		endUser.signsIn();
@@ -56,7 +52,7 @@ public class CreateSpecialVacationTest {
 		employee.saveTheRequest();
 		specialRequest.verifyIfSpecialVacationCreated();
 		employee.openMyRequestsTab();
-		validation.request_is_approved(Constants.PENDING_MSG);
+		validation.checkStatusOfTheRequest(Constants.PENDING_MSG);
 		endUser.signsOut();
 	}
 

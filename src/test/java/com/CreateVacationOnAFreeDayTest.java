@@ -1,30 +1,23 @@
+/**
+ * Test if a vacation created in National Free Days
+ * does not appear in the Inbox tab of the DM
+ */
 package com;
 
 import java.text.ParseException;
-
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-
-
-
-
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-
 import tools.Constants;
-
-
-
-
 import com.steps.CreateVacationSteps;
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
-import com.steps.UserSteps;
+import com.steps.LoginSteps;
 
 @RunWith(SerenityRunner.class)
 public class CreateVacationOnAFreeDayTest {
@@ -36,7 +29,7 @@ public class CreateVacationOnAFreeDayTest {
     public Pages pages;
 
     @Steps
-    UserSteps endUser;
+    LoginSteps user;
     @Steps
     CreateVacationSteps employee; 
     @Steps
@@ -45,26 +38,26 @@ public class CreateVacationOnAFreeDayTest {
     DMApproveRequestsSteps validation;
     
     @Test
-    public void create_Vacation() throws ParseException {
-		endUser.logIn(Constants.VALID_SCREEN_NAME,Constants.VALID_PASSWORD);
+    public void national_free_day_vacation_request_is_not_created() throws ParseException {
+    	
+    	//create request
+		user.logIn(Constants.VALID_SCREEN_NAME,Constants.VALID_PASSWORD);
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
-		employee.startingDate();
+		employee.openStartDateSelection();
 		employee.selectDate(2016, "Dec", 26);
-		
 		employee.convertDateIntoString();
-		
-		employee.endingDate();
+		employee.openEndDateSelection();
 		employee.selectDate(2016, "Dec", 26);
 		employee.saveTheRequest();
-		endUser.signsOut();
+		user.signsOut();
 		
-		endUser.logIn(Constants.DM_SCREEN_NAME,Constants.DM_PASSWORD);
+		//check DM's Inbox
+		user.logIn(Constants.DM_SCREEN_NAME,Constants.DM_PASSWORD);
 		vacationTab.openVacationTab();
 		vacationTab.accessInbox();
-		
-		validation.request_is_approved_on_a_free_day("Holiday");
-		endUser.signsOut();
+		validation.findRequestsByType("Holiday");
+		user.signsOut();
     }
 
 } 

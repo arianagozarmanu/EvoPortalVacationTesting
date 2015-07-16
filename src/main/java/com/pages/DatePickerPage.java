@@ -3,11 +3,9 @@ package com.pages;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -18,10 +16,8 @@ public class DatePickerPage extends PageObject {
 	private static int day;
 	private static String month;
 	private static String textInHeader;
-	
 	private static String firstYear;
 	private static String lastYear;
-	
 	private static int firstYearInt;
 	private static int lastYearInt;
 	private static int i;
@@ -40,9 +36,9 @@ public class DatePickerPage extends PageObject {
 
 	public void selectDate(int year, String month, int day) {
 		
-		this.year=year;
-		this.month=month;
-		this.day=day;
+		DatePickerPage.year=year;
+		DatePickerPage.month=month;
+		DatePickerPage.day=day;
 		
 		waitABit(1000);
 		WebElement title = getDriver().findElement(By
@@ -107,7 +103,7 @@ public class DatePickerPage extends PageObject {
 
 	}
 	
-	public void convertMonth() throws ParseException {
+	public void convertMonthToInteger() throws ParseException {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new SimpleDateFormat("MMM").parse(month));
 		monthInt = cal.get(Calendar.MONTH) + 1;

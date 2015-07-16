@@ -1,18 +1,22 @@
 package com.pages;
 
-import java.io.*;
-import java.util.*;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
-
 import net.serenitybdd.core.pages.PageObject;
-import tools.Constants;
 
-public class BodyEmailAppearancePage extends PageObject {
+public class BodyEmailContentPage extends PageObject {
 
 	private String subjectPattern = "You have submitted a new Vacation Request";
 	private String receivePattern = "New Vacation Request submitted";
-	
+
 	private String contentPattern1 = "<br /> <br />" + "\n" + "\n" + "\n"
 			+ "			You have submitted a new Vacation Request. Your holiday interval is: <strong>";
 	private String strongPattern = "</strong>." + "\n";
@@ -22,9 +26,9 @@ public class BodyEmailAppearancePage extends PageObject {
 	private String contentPattern3 = "\n" + "<!-- " + "\n" + "<br/> <br/> " + "\n" + "\n" + "Cheers, " + "\n"
 			+ "<br /> " + "\n" + "The EvoPortal Team" + "\n" + "--><br/> <br/> Cheers, <br /> The EvoPortal Team";
 
-	public void holidayVacationRequestEmployee(String startDate,String endDate) {
+	public void holidayVacationRequestFollowsSpecificPattern(String startDate, String endDate) {
 		checkTheSubject();
-		checkTheContent(startDate,endDate);
+		checkTheContent(startDate, endDate);
 	}
 
 	public void checkTheSubject() {
@@ -48,7 +52,6 @@ public class BodyEmailAppearancePage extends PageObject {
 				}
 		}
 	}
-	
 
 	public static boolean compareFiles(String file1, String file2) {
 
@@ -131,7 +134,7 @@ public class BodyEmailAppearancePage extends PageObject {
 		return emailContentIsOk;
 	}
 
-	public void checkTheContent(String startDate,String endDate) {
+	public void checkTheContent(String startDate, String endDate) {
 		String result = "";
 		String text = EmailConnecting.content;
 		writeToFile("C:/Users/arianagozarmanu/Desktop/EmailContent.txt", text);
@@ -143,9 +146,9 @@ public class BodyEmailAppearancePage extends PageObject {
 			i++;
 		}
 		name = name + "," + "\n";
-		result = name + contentPattern1 + startDate + " - " + endDate + strongPattern + brPattern
-				+ contentPattern2 + "Ariana Gozar-Manu" + bPattern + contentPattern3 + "\n";
-		
+		result = name + contentPattern1 + startDate + " - " + endDate + strongPattern + brPattern + contentPattern2
+				+ "Ariana Gozar-Manu" + bPattern + contentPattern3 + "\n";
+
 		System.out.println(result);
 		System.out.println();
 		writeToFile("C:/Users/arianagozarmanu/Desktop/MyContent.txt", result);
@@ -154,13 +157,14 @@ public class BodyEmailAppearancePage extends PageObject {
 				"C:/Users/arianagozarmanu/Desktop/MyContent.txt"));
 	}
 
-	public void emailWasCreated(String data) {
+	public void emailWithNewVacationRequestWasReceivedByDM(String data) {
 		System.out.println(data);
 		Assert.assertTrue("No email about a vacation submitted!", EmailConnecting.subject.contains(receivePattern));
 		Assert.assertTrue("No request submitted in " + data + " !", EmailConnecting.content.contains(data));
 	}
+
 	//for Employee
-	public void emailWasCreatedEmployee(String data) {
+	public void confirmationEmailForNewVacationRequestWasCreated(String data) {
 		System.out.println(data);
 		Assert.assertTrue("No email about a vacation submitted!", EmailConnecting.subject.contains(subjectPattern));
 		Assert.assertTrue("No request submitted in " + data + " !", EmailConnecting.content.contains(data));

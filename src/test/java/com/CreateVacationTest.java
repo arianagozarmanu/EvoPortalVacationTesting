@@ -1,3 +1,7 @@
+/**
+ * Test if a vacation request with implicit settings
+ * is created, selecting just the start and end date
+ */
 package com;
 
 import java.text.ParseException;
@@ -13,7 +17,7 @@ import tools.Constants;
 import com.steps.CreateVacationSteps;
 import com.steps.DMApproveRequestsSteps;
 import com.steps.DMInboxAccessSteps;
-import com.steps.UserSteps;
+import com.steps.LoginSteps;
 
 @RunWith(SerenityRunner.class)
 public class CreateVacationTest {
@@ -25,7 +29,7 @@ public class CreateVacationTest {
     public Pages pages;
 
     @Steps
-    UserSteps endUser;
+    LoginSteps user;
     @Steps
     CreateVacationSteps employee; 
     @Steps
@@ -34,21 +38,20 @@ public class CreateVacationTest {
     DMApproveRequestsSteps validation;
     
     @Test
-    public void create_Vacation() throws ParseException {
-		endUser.logIn(Constants.VALID_SCREEN_NAME,Constants.VALID_PASSWORD);
+    public void create_holiday_request() throws ParseException {
+		user.logIn(Constants.VALID_SCREEN_NAME,Constants.VALID_PASSWORD);
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
-		employee.startingDate();
-		employee.selectDate(2020, "Nov", 17);
-		
+		employee.openStartDateSelection();
+		employee.selectDate(2025, "Nov", 18);
 		employee.convertDateIntoString();
-		
-		employee.endingDate();
-		employee.selectDate(2020, "Nov", 17);
+		employee.openEndDateSelection();
+		employee.selectDate(2025, "Nov", 18);
 		employee.saveTheRequest();
 		employee.openMyRequestsTab();
-		validation.request_is_approved(Constants.PENDING_MSG);
-		endUser.signsOut();
+		validation.show_75_requests_per_page();
+		validation.checkStatusOfTheRequest(Constants.PENDING_MSG);
+		user.signsOut();
     }
 
 } 

@@ -78,7 +78,7 @@ public class DMVacationsReportPage extends PageObject {
 		Assert.assertTrue("Wrong update for Total Free Days!",ok);
 	}
 
-	public void checkOneRequest(String lastName, String firstName) {
+	public void selectOneRequest(String lastName, String firstName) {
 
 		List<WebElement> nameList;
 		List<WebElement> checkBoxList;

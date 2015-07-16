@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import com.steps.DMInboxAccessSteps;
-import com.steps.UserSteps;
+import com.steps.LoginSteps;
 
 @RunWith(SerenityRunner.class)
 public class DMInboxAccessTest {
@@ -23,19 +23,19 @@ public class DMInboxAccessTest {
     public Pages pages;
 
     @Steps
-    public UserSteps endUser;
+    public LoginSteps endUser;
     @Steps
     public DMInboxAccessSteps dmInboxAccessSteps;
     
     @Issue("InboxAccessing")
     
     @Test
-    public void dM_can_access_inbox_item(){
+    public void DM_can_access_inbox_tab(){
     	endUser.is_the_home_page();
     	endUser.enters_data(Constants.DM_SCREEN_NAME, Constants.DM_PASSWORD);
     	endUser.signsIn();
     	dmInboxAccessSteps.openVacationTab();
     	dmInboxAccessSteps.accessInbox();
-    	dmInboxAccessSteps.approve_button_appears();
+    	dmInboxAccessSteps.checkIfInboxPageIsValid();
     }
 }
