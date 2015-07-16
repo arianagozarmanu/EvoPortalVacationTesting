@@ -157,8 +157,8 @@ public class AssignedToMeRequestsPage extends PageObject {
 				.findElements(
 						By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
 		int typeListSize = typeList.size();
+		
 		for (i = 0; i < typeListSize; i++) {
-			if (typeList.get(i).getText().equals(data)) {
 				System.out.println(data);
 				System.out.println(dataList.get(i).getText());
 				if (dataList.get(i).getText().equals(data)) {
@@ -166,9 +166,8 @@ public class AssignedToMeRequestsPage extends PageObject {
 						return true;
 					}
 				}
-				// System.out.println(dataList.get(i).getText());
-			}
 		}
+		
 		return false;
 	}
 
