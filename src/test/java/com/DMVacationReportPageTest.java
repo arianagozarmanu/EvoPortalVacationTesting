@@ -45,9 +45,7 @@ public class DMVacationReportPageTest {
 		//create a new request
 		endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		dmInboxAccessSteps.openVacationTab();
-		newRequest.createNewRequest(Constants.REQUEST_START_YEAR, Constants.REQUEST_START_MONTH,
-				Constants.REQUEST_START_DAY, Constants.REQUEST_END_YEAR, Constants.REQUEST_END_MONTH,
-				Constants.REQUEST_END_DAY);
+		newRequest.createNewRequest(2019,"Apr",30,2019,"Apr",30);
 		endUser.signsOut();
 		
 		//get total free days for a gived name - employee

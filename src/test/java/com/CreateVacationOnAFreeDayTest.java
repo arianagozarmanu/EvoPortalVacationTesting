@@ -45,10 +45,10 @@ public class CreateVacationOnAFreeDayTest {
 		vacationTab.openVacationTab();
 		employee.openNewVacationRequestTab();
 		employee.openStartDateSelection();
-		employee.selectDate(2016, "Dec", 26);
+		employee.selectDate(2027, "Dec", 01);
 		employee.convertDateIntoString();
 		employee.openEndDateSelection();
-		employee.selectDate(2016, "Dec", 26);
+		employee.selectDate(2027, "Dec", 01);
 		employee.saveTheRequest();
 		user.signsOut();
 		

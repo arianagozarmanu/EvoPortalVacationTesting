@@ -77,7 +77,6 @@ public class AssignedToMeRequestsPage extends PageObject {
 	}
 	
 	
-
 	public boolean checkIfApproveRequestExists(String status) {
 		List<WebElement> dataList;
 		List<WebElement> statusList;
@@ -118,44 +117,50 @@ public class AssignedToMeRequestsPage extends PageObject {
 		List<WebElement> dataList;
 		List<WebElement> typeList;
 		while (nextPageButton.isPresent()) {
-			dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(3)"));
-			typeList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6)"));
+			dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(3) a"));
+			typeList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
 			int dataListSize = dataList.size();
 			for (int i = 0; i < dataListSize; i++) {
+				System.out.println(data);
+				System.out.println(dataList.get(i).getText());
 				if (dataList.get(i).getText().equals(data)) {
 					if (typeList.get(i).getText().equals(type)) {
 						return true;
 					}
 				}
-				System.out.println(dataList.get(i).getText());
+				//System.out.println(dataList.get(i).getText());
 			}
 			clickNextPageButton();
 			waitABit(500);
 			getDriver().navigate().refresh();
 		}
 
-		dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(3)"));
-		typeList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6)"));
+		dataList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(3) a"));
+		typeList = getDriver().findElements(By.cssSelector("tr[class*='portlet-section-'] td:nth-child(6) a"));
 		int typeListSize = typeList.size();
 		for (int i = 0; i < typeListSize; i++) {
-			if (typeList.get(i).getText().equals(data)) {
+			System.out.println(data);
+			System.out.println(dataList.get(i).getText());
+			if (dataList.get(i).getText().equals(data)) {
 				if (typeList.get(i).getText().equals(type)) {
 					return true;
 				}
 			}
-			System.out.println(dataList.get(i).getText());
+			//System.out.println(dataList.get(i).getText());
 		}
-
 		return false;
 	}
 	
 	//If the Vacation created in a free day appears in the Inbox, then the test must be failed
 	public void checkApproveRequestOnFreeDay(String type) {
-		boolean exists = !checkIfVacationRequestOnAFreeDayExists(type);
-		Assert.assertTrue("Request does exist!", exists);
+		boolean exists = checkIfVacationRequestOnAFreeDayExists(type);
+		System.out.println(exists);
+		boolean result=!exists;
+		Assert.assertTrue("Request does exist!", result);
 	}
 	
 	public void setData(String newData) {
 		data = newData;
+		System.out.println(data);
 	}
 }
