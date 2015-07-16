@@ -1,3 +1,7 @@
+/**
+ * Test if special vacation is
+ * created --> appears in my requests
+ */
 package com;
 
 import java.text.ParseException;
@@ -41,14 +45,14 @@ public class CreateSpecialVacationTest {
 	DMApproveRequestsSteps validation;
 
 	@Test
-	public void create_Vacation() throws ParseException {
+	public void test_if_special_vacation_is_created() throws ParseException {
 		endUser.is_the_home_page();
 		endUser.enters_data(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		endUser.signsIn();
 		vacationTab.openVacationTab();
 		employee.createNewRequest(2016, "Nov", 24, 2016, "Nov", 24);
 		specialRequest.selectSpecialVacation();
-		specialRequest.takeVacationForChildBirth();
+		specialRequest.takeVacationForChildBirth();  //you can choose also ForFuneral/ForMarriage
 		employee.saveTheRequest();
 		specialRequest.verifyIfSpecialVacationCreated();
 		employee.openMyRequestsTab();
