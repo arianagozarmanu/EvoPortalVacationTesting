@@ -24,18 +24,24 @@ public class FilterRequestsPage extends PageObject {
 
 	public void selectFilters(String vacationType, String daysNumber,
 			String vacationStatus) {
-
+		
+		try {
 		WebElement checkBoxType = getDriver().findElement(
 				By.cssSelector("[id*='_" + vacationType + "Checkbox']"));
 		checkBoxType.click();
-
+		
+	
 		WebElement checkBoxNumber = getDriver().findElement(
 				By.cssSelector("[id*='_" + daysNumber + "Checkbox']"));
 		checkBoxNumber.click();
-
+		
+		
 		WebElement checkBoxStatus = getDriver().findElement(
 				By.cssSelector("[id*='_" + vacationStatus + "Checkbox']"));
 		checkBoxStatus.click();
+		}catch(Exception e){
+			System.out.println("You did not type correct the type/number/status");
+		}
 
 	}
 
@@ -171,7 +177,7 @@ public class FilterRequestsPage extends PageObject {
 		System.out.println(startNr);
 		System.out.println(endNr);
 
-		Assert.assertTrue("Filter does not work properly :(",checkTheResultOfFilter(validType, validStatus));
+		Assert.assertTrue("Filter does not work properly :("+"\n"+"You did not type correct the type/number/status"+"\n"+ "type: HOLIDAY, VACATION_WITHOUT_PAYMENT, SICK_LEAVE, SPECIAL_VACATION, MATERNITY_LEAVE"+"\n"+"number:FIFTH, TENTH, TWENTIETH, FIFTIETH, REST"+"\n"+"status:PENDING, REJECTED, APROVED, CANCELLED, WITHDRAWN",checkTheResultOfFilter(validType, validStatus));
 
 	}
 

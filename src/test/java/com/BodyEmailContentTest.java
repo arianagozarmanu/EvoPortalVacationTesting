@@ -53,14 +53,14 @@ public class BodyEmailContentTest {
 		//create a new holiday request
 		endUser.logIn(Constants.VALID_SCREEN_NAME, Constants.VALID_PASSWORD);
 		dmInboxAccessSteps.openVacationTab();
-		newRequest.createNewRequest(2018,"May",23,2018,"May",23);      //write a start date and an end date -->format:YYYY,"---","DD"
+		newRequest.createNewRequest(2018,"May",25,2018,"May",25);      //write a start date and an end date -->format:YYYY,"---","DD"
 																	 //.createNewRequest -> creates automatically a holiday vacation
 		newRequest.saveTheRequest();
 		endUser.signsOut();
 		
 		//read email and check the content
 		emailSteps.readEmail(Constants.SITE, Constants.EVO_MAIL_ADDRESS, Constants.EVO_MAIL_PASSWORD);
-		emailApp.checkEmailContentForHolidayRequest("23/05/2018","23/05/2018");     //write the same start date and end date -->format:DD/MM/YYYY
+		emailApp.checkEmailContentForHolidayRequest("25/05/2018","25/05/2018");     //write the same start date and end date -->format:DD/MM/YYYY
 		
 	}
 	
